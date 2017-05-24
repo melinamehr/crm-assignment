@@ -51,11 +51,25 @@ end
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
   def update(attribute, value)
-    
-    @@contacts.each do |contact|
+    if attribute = first_name
+      self.first_name = value
+    elsif attribute = last_name
+      self.last_name = value
+    elsif attribute = value
+      self.email = value
+    elsif attribute = note
+      self.note = value
+      return value
+    end
+end
+  # def first_name_update(value)
 
+    # in here, self refers to the instance being acted up
 
-  end
+# instance method usage: melina.update(stuff1, stuff2)
+#melina.update("first_name", "MELINA2")
+# class method usage: Contact.find_by(thing1, thing2)
+
 
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id
@@ -105,13 +119,13 @@ end
   end
 
   def full_name
-
+    "#{first_name}" "#{last_last}"
   end
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-
+    @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
