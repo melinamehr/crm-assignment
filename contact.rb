@@ -7,15 +7,13 @@ class Contact
   @@next_id = 1000
 
     @@next_id += 1
-  end
 
   def full_name
     "#{first_name} #{last_name}"
   end
-end
 
   # This method should initialize the contact's attributes
-  def initialize(first_name, last_name, email)
+  def initialize(first_name, last_name, email, note)
       @first_name = first_name
       @last_name = last_name
       @email = email
@@ -25,11 +23,11 @@ end
 
   # This method should call the initializer,
   # store the newly created contact, and then return it
-  def self.create(first_name, last_name, email)
-    new_contact = Contact.new(first_name, last_name, email)
+  def self.create(first_name, last_name, email, note)
+    new_contact = Contact.new(first_name, last_name, email, note)
     @@contacts << new_contact
     new_contact
-    end
+
   end
 
   # This method should return all of the existing contacts
@@ -37,29 +35,24 @@ end
     @@contacts
   end
 
-  end
-
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
     end
-
-  end
 
   # This method should allow you to specify
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
   def update(attribute, value)
-    if attribute = first_name
+    if attribute == "first_name"
       self.first_name = value
-    elsif attribute = last_name
+    elsif attribute == "last_name"
       self.last_name = value
-    elsif attribute = value
+    elsif attribute == "email"
       self.email = value
-    elsif attribute = note
+    elsif attribute == "note"
       self.note = value
-      return value
     end
 end
   # def first_name_update(value)
@@ -76,40 +69,35 @@ end
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute, value)
-      if attribute = "first_name"
+
+    if attribute == "first_name"
         @@contacts.each do |contact|
-      if value = contact.first_name
-        return contact
-        end
-      end
-      nil
-    end
-  def self.find_by(attribute, value)
-      if attribute = "last_name"
-          @@contacts.each do |contact|
-        if value = contact.last_name
+        if value == contact.first_name
           return contact
-        end
+          end
       end
-      nil
-    end
-    def self.find_by(attribute, value)
-        if attribute = "email"
-            @@contacts.each do |contact|
-          if value = contact.email
+
+
+    elsif attribute == "last_name"
+          @@contacts.each do |contact|
+          if value == contact.last_name
             return contact
           end
-        end
-        nil
+
       end
-    def self.find_by(attribute, value)
-          if attribute = "note"
-              @@contacts.each do |contact|
-            if value = contact.note
+
+    elsif attribute == "email"
+            @@contacts.each do |contact|
+            if value == contact.email
               return contact
             end
+        end
+    elsif attribute == "note"
+              @@contacts.each do |contact|
+              if value == contact.note
+                return contact
+            end
           end
-          nil
         end
   end
 
