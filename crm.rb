@@ -4,7 +4,7 @@ class CRM
 
   def initialize(name)
       puts "Okay, this CRM has the name #{name}"
-    end
+    e
 
   def main_menu
     while true
