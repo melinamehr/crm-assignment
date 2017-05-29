@@ -4,7 +4,7 @@ class CRM
 
   def initialize(name)
       puts "Okay, this CRM has the name #{name}"
-    e
+    end
 
   def main_menu
     while true
@@ -50,7 +50,14 @@ class CRM
     print 'Enter a Note: '
     note = gets.chomp
 
-    Contact.create(first_name, last_name, email, note)
+    #Contact.create(first_name, last_name, email, note)
+
+    contact = Contact.create(
+    first_name: first_name,
+    last_name:  last_name,
+    email:      email,
+    note:       note
+    )
 
   end
 
@@ -90,7 +97,12 @@ class CRM
     contact_to_search = Contact.find_by(attribute_search)
   end
 
-    a_crm_app = CRM.new("my_CRM")
-    a_crm_app.main_menu
+end
+
+at_exit do
+  ActiveRecord::Base.connection.close
+
 
 end
+
+Contact.create("melina", "mehr", "melinamehr@msn.com", "healehoruhalharalhg")

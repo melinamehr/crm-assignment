@@ -4,11 +4,6 @@ require 'mini_record'
 
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'crm.sqlite3')
 
-class Contact
-...
-end
-
-
 class Contact < ActiveRecord::Base
 
     field :first_name, as: :string
@@ -34,7 +29,7 @@ class Contact < ActiveRecord::Base
   #     @first_name = first_name
   #     @last_name = last_name
   #     @email = email
-        #@note = note
+
   #     @id = @@next_id
   # end
   #
@@ -76,7 +71,7 @@ class Contact < ActiveRecord::Base
 #
 #     # in here, self refers to the instance being acted up
 #
-# # instance method usage: melina.update(stuff1, stuff2)
+# # instance method usage: melina.update(stu1, stuff2)
 # #melina.update("first_name", "MELINA2")
 # # class method usage: Contact.find_by(thing1, thing2)
 #
@@ -138,7 +133,3 @@ class Contact < ActiveRecord::Base
 end
 
 Contact.auto_upgrade!
-
-at_exit do
-  ActiveRecord::Base.connection.close
-end
